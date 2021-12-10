@@ -1,4 +1,5 @@
 local LogType = require "GlobalTypeDef.LogType"
+_G.GameInstance = require "Service.GameInstance"
 local ServiceManager = Class()
 
 ServiceManager.ServiceList = {}
@@ -35,6 +36,7 @@ function ServiceManager:_AddService(ServiceName)
     Service:Load()
     self.ServiceCount = self.ServiceCount + 1
     self.ServiceList[self.ServiceCount] = Service
+    GameInstance[ServiceName] = Service
 end
 
 return ServiceManager
